@@ -2,7 +2,7 @@
 FROM python:3.10
 LABEL authors="kwz50"
 # set the working directory in the container
-WORKDIR /code
+WORKDIR /multiBLAST
 
 # copy the dependencies file to the working directory
 COPY requirements.txt .
@@ -14,14 +14,17 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # command to run on container start
-CMD [ "python", "pipeline/step01_blast.py" ]
+ENTRYPOINT ["python"]
 
-
+# Set the default command to run when the container starts
+CMD ["-i"]
 
 #--entrypoint -v C:/Users/kwz50/PycharmProjects/multiBLAST:/multiBLAST -v C:\Users\kwz50\IdeaProjects\PowerBarcoder:/PowerBarcoder --rm
 #--entrypoint -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --rm
 
 
 #sudo docker build -t multiblast .
-#sudo docker run -d -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --name multiblast multiblast
+#sudo docker run -it -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --name multiblast multiblast
 #sudo docker exec -it  multiblast bash
+#sudo docker rm multiblast
+#sudo docker image rm multiblast
