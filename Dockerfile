@@ -17,12 +17,11 @@ COPY . .
 CMD [ "python", "pipeline/step01_blast.py" ]
 
 
-ENTRYPOINT ["top", "-b"]
-
 
 #--entrypoint -v C:/Users/kwz50/PycharmProjects/multiBLAST:/multiBLAST -v C:\Users\kwz50\IdeaProjects\PowerBarcoder:/PowerBarcoder --rm
 #--entrypoint -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --rm
 
+
+#sudo docker build -t multiblast .
 #sudo docker run -d -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --name multiblast multiblast
 #sudo docker exec -it  multiblast bash
-#sudo docker exec -it  powerbarcoder bash
