@@ -24,7 +24,10 @@ CMD ["-i"]
 
 
 #sudo docker build -t multiblast .
-#sudo docker run -it -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --name multiblast multiblast
+#sudo docker run -d -it -v /home/sktang/docker/multiBLAST:/multiBLAST -v /home/lykuo/lab_data2/miseq/PowerBarcoder:/PowerBarcoder --name multiblast multiblast
 #sudo docker exec -it  multiblast bash
+
+
+#sudo docker stop multiblast
 #sudo docker rm multiblast
 #sudo docker image rm multiblast
