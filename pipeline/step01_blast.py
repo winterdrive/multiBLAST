@@ -73,24 +73,21 @@ def parsing_the_best_blast_xml_result(input_file_path: str):
         print("The best hit is:" + best_hit.title)
     return best_hit.title
 
+def main(load_file_dir, save_file_dir):
+    message_queue = queue.Queue()
+    rawFiles = os.listdir(load_file_dir)
+    for i in rawFiles:
+        message_queue.put(i)
+    execute_the_queue(message_queue, load_file_dir, save_file_dir)
 
 load_file_dir_r1 = "/PowerBarcoder/data/result/202307071741/trnLF_result/denoiseResult/r1/"
 load_file_dir_r2 = "/PowerBarcoder/data/result/202307071741/trnLF_result/denoiseResult/r2/"
+load_file_dir_dada2_merged = "/PowerBarcoder/data/result/202307071741/trnLF_result/mergeResult/dada2/merged/"
 save_file_dir_r1 = "/multiBLAST/data/output/r1/"
 save_file_dir_r2 = "/multiBLAST/data/output/r2/"
+save_file_dir_dada2_merged = "/multiBLAST/data/output/dada2_merged/"
 
-rawFilesR1 = os.listdir(load_file_dir_r1)
-rawFilesR2 = os.listdir(load_file_dir_r2)
+# main(load_file_dir_r1, save_file_dir_r1)
+# main(load_file_dir_r2, save_file_dir_r2)
+main(load_file_dir_dada2_merged, save_file_dir_dada2_merged)
 
-message_queue_r1 = queue.Queue()
-message_queue_r2 = queue.Queue()
-
-for i in rawFilesR1:
-    message_queue_r1.put(i)
-for i in rawFilesR2:
-    message_queue_r2.put(i)
-
-execute_the_queue(message_queue_r1, load_file_dir_r1, save_file_dir_r1)
-execute_the_queue(message_queue_r2, load_file_dir_r2, save_file_dir_r2)
-
-# TODO: parsing the best result in each XML file
