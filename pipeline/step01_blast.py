@@ -76,7 +76,11 @@ def parsing_the_best_blast_xml_result(input_file_path: str):
 def main(load_file_dir, save_file_dir):
     message_queue = queue.Queue()
     rawFiles = os.listdir(load_file_dir)
+    xmlFiles = os.listdir(save_file_dir)
     for i in rawFiles:
+        # we skip the xml files already been processed by the previous batch
+        if i in xmlFiles:
+            continue
         message_queue.put(i)
     execute_the_queue(message_queue, load_file_dir, save_file_dir)
 
