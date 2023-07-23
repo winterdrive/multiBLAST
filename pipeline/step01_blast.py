@@ -77,9 +77,12 @@ def main(load_file_dir, save_file_dir):
     message_queue = queue.Queue()
     rawFiles = os.listdir(load_file_dir)
     xmlFiles = os.listdir(save_file_dir)
+    # print("rawFiles:", rawFiles[0])
+    # print("xmlFiles:", xmlFiles[0])
     for i in rawFiles:
         # we skip the xml files already been processed by the previous batch
         if i in xmlFiles:
+            # print("skip:", i)
             continue
         message_queue.put(i)
     execute_the_queue(message_queue, load_file_dir, save_file_dir)
@@ -91,7 +94,7 @@ save_file_dir_r1 = "/multiBLAST/data/output/r1/"
 save_file_dir_r2 = "/multiBLAST/data/output/r2/"
 save_file_dir_dada2_merged = "/multiBLAST/data/output/dada2_merged/"
 
-# main(load_file_dir_r1, save_file_dir_r1)
-# main(load_file_dir_r2, save_file_dir_r2)
+main(load_file_dir_r1, save_file_dir_r1)
+main(load_file_dir_r2, save_file_dir_r2)
 main(load_file_dir_dada2_merged, save_file_dir_dada2_merged)
 
