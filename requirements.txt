@@ -89,7 +89,7 @@ tzlocal==4.2
 urllib3==1.26.19
 virtualenv==20.16.6
 wcwidth==0.2.6
-Werkzeug==2.2.3
+Werkzeug==3.0.6
 wrapt==1.14.1
 wsproto==1.2.0
 yarl==1.9.2
